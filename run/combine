@@ -1,0 +1,263 @@
+#!/bin/bash 
+
+get_param() 
+{
+   dir=$1
+   ix=$2
+   param=`echo $dir | cut -d '_'  -f$ix`
+}
+###########################################################
+
+while getopts 'd:l:c:f:p:n:x:' OPTION
+do
+  case $OPTION in
+  d)	
+	DIR="$OPTARG"
+	;;
+  l)	
+	LAMBDA="$OPTARG"
+	;;
+  c)	
+	DENSITY="$OPTARG"
+	;;
+  f)	
+	F="$OPTARG"
+	;;
+  p)	
+	PF="$OPTARG"
+	;;
+  n)	
+	NODES="$OPTARG"
+	;;
+  x)	
+	FX="$OPTARG"
+	;;
+	
+  ?)	
+  	usage;
+	;;
+  esac
+done
+
+if [ -z $DIR ]
+then
+   echo Usage:
+   exit
+fi
+
+if [ -z $NODES -o -z $FX ]
+then
+	FX=-1
+fi
+
+#DIRS list match directories in current folder
+dirs=(`ls -d */`)
+
+j=0
+
+for ((i=0; $i<(${#dirs[*]}); i++)); do
+	dir=`echo ${dirs[$i]} | cut -d '/' -f1`
+   
+	get_param $dir 1
+	lambda=$param
+
+	get_param $dir 2
+	density=$param
+
+	get_param $dir 9
+	fault=$param
+
+	get_param $dir 10
+	pfault=$param
+
+	if [ -z "$LAMBDA" -o "$LAMBDA" = "$lambda" ] \
+		&& [ -z "$DENSITY" -o "$DENSITY" = "$density" ] \
+		&& [ -z "$F" -o "$F" = "$fault" ] \
+		&& [ -z "$PF" -o "$PF" = "$pfault" ]
+	then
+		#echo $i: $dir
+		SIMDIR[j]=$dir
+		PREFIX=""
+
+		if [ -n "$NODES" ]
+		then
+			#pega o valor de NODES nos *-xgraph do diretorio atual e guarda em vetor
+			#fora do for, pegar o primeiro parâmetro que falta e usar como x para escrever novos xgraphs
+			decision_graph[j]=`cat $dir/decision-xgraph | grep "$NODES .\+ .\+"`
+			sink_graph[j]=`cat $dir/sink-xgraph | grep "$NODES .\+ .\+"`
+			sinknodes_graph[j]=`cat $dir/sinknodes-xgraph | grep "$NODES .\+ .\+"`
+			pdnodes_graph[j]=`cat $dir/pdnodes-xgraph | grep "$NODES .\+ .\+"`
+			pd_graph[j]=`cat $dir/pd-xgraph | grep "$NODES .\+ .\+"`
+			collect_graph[j]=`cat $dir/collect-xgraph | grep "$NODES .\+ .\+"`
+			collectnodes_graph[j]=`cat $dir/collectnodes-xgraph | grep "$NODES .\+ .\+"`
+			consensustime_graph[j]=`cat $dir/consensustime-xgraph | grep "$NODES .\+ .\+"`
+			sinktime_graph[j]=`cat $dir/sinktime-xgraph | grep "$NODES .\+ .\+"`
+			agreement_graph[j]=`cat $dir/agreement-xgraph | grep "$NODES .\+ .\+"`
+			rounds_graph[j]=`cat $dir/rounds-xgraph | grep "$NODES .\+ .\+"`
+
+			PREFIX=_n${NODES}
+		fi
+	
+		label=""
+		ins=0
+		if [ -z "$LAMBDA" ] 
+		then
+			if [ $FX -eq 0 ]
+			then
+				values[j]=$lambda
+			else
+				VARS[j]=${VARS[j]}_$lambda
+				label=`echo $label $lambda`
+				ins=1
+			fi
+		else
+			PREFIX=`echo ${PREFIX}_$LAMBDA`
+		fi
+		
+		if [ -z "$DENSITY" ]
+		then
+			if [ $FX -eq 1 ] 
+			then
+				values[j]=$density
+			else
+				VARS[j]=${VARS[j]}_$density
+				[ $ins -eq 1 ] && label=`echo $label, `
+				
+				case $density in
+				   dense) label=`echo $label densa` ;;
+				   normal) label=`echo $label normal` ;;
+				   sparse) label=`echo $label esparsa` ;;
+				   hib) label=`echo $label híbrida` ;;
+				   *) echo "Você tem de entrar com um parâmetro válido" ;;
+				esac				
+				  
+				#label=`echo $label $density`
+				ins=1
+			fi
+		else
+			PREFIX=`echo ${PREFIX}_$DENSITY`
+		fi
+		
+		if [ -z "$F" ] 
+		then
+			if [ $FX -eq 2 ] 
+			then
+				values[j]=$fault
+				X_AXIS="f"
+				X_TIC=0.1
+			else
+				VARS[j]=${VARS[j]}_f$fault
+				[ $ins -eq 1 ] && label=`echo $label, `  
+				label=`echo $label F: $fault`
+				ins=1
+			fi
+		else
+			PREFIX=`echo ${PREFIX}_f$F`
+		fi
+		
+		if [ -z "$PF" ]
+		then
+			if [ $FX -eq 3 ] 
+			then
+				values[j]=$pfault
+			else
+				VARS[j]=${VARS[j]}_pf$pfault
+				[ $ins -eq 1 ] && label=`echo $label, `  
+				label=`echo $label Pf: $pfault`
+				ins=1
+			fi
+		else
+			PREFIX=`echo ${PREFIX}_pf$PF`
+		fi
+
+		SIMNAME[$j]=$label	
+		j=$j+1
+	fi
+done
+
+if [ $FX -ne -1 ]
+then
+	PREFIX=`echo ${PREFIX}_x${FX}`
+fi
+
+##################################################
+OUTDIR=`echo $DIR/results/combine$PREFIX`
+rm -rf $OUTDIR
+
+if [ -n "$NODES" ]
+then
+	k=0
+	unset SIMDIR
+	for ((i=0; $i<(${#decision_graph[*]}); i++)); do
+	    d=(${decision_graph[i]})
+	    s=(${sink_graph[i]})
+	    sn=(${sinknodes_graph[i]})
+	    pn=(${pdnodes_graph[i]})
+	    pd=(${pd_graph[i]})
+	    co=(${collect_graph[i]})
+	    cn=(${collectnodes_graph[i]})
+	    ct=(${consensustime_graph[i]})
+	    st=(${sinktime_graph[i]})
+	    at=(${agreement_graph[i]})
+	    rd=(${rounds_graph[i]})
+		
+		#gravar em arquivo o valor de cada parametro x, tendo os outros parametros fixos
+		ndir=$OUTDIR/n${NODES}${PREFIX}${VARS[i]}
+		mkdir -p $ndir
+		echo ${values[i]} ${d[1]} ${d[2]} >> $ndir/decision-xgraph
+		echo ${values[i]} ${s[1]} ${s[2]} >> $ndir/sink-xgraph
+		echo ${values[i]} ${sn[1]} ${sn[2]} >> $ndir/sinknodes-xgraph
+		echo ${values[i]} ${pn[1]} ${pn[2]} >> $ndir/pdnodes-xgraph
+		echo ${values[i]} ${pd[1]} ${pd[2]} >> $ndir/pd-xgraph
+		echo ${values[i]} ${co[1]} ${co[2]} >> $ndir/collect-xgraph
+		echo ${values[i]} ${cn[1]} ${cn[2]} >> $ndir/collectnodes-xgraph
+		echo ${values[i]} ${ct[1]} ${ct[2]} >> $ndir/consensustime-xgraph
+		echo ${values[i]} ${st[1]} ${st[2]} >> $ndir/sinktime-xgraph
+		echo ${values[i]} ${at[1]} ${at[2]} >> $ndir/agreement-xgraph
+		echo ${values[i]} ${rd[1]} ${rd[2]} >> $ndir/rounds-xgraph
+		
+		found=0
+		for ((j=0; $j<(${#SIMDIR[*]}); j++)); do
+			[ "$ndir" = "${SIMDIR[j]}" ] && found=1
+		done
+
+		if [ $found -eq 0 ] 
+		then
+			SIMDIR[k]=$ndir 
+			SIMNAME[k]=${SIMNAME[i]}
+			let k++ 
+		fi
+	done
+	
+	for ((i=k; $i<(${#decision_graph[*]}); i++)); do
+		unset SIMDIR[i]
+		unset SIMNAME[i]
+	done
+fi
+
+echo ""
+echo "Dirs: ${SIMDIR[*]}"
+echo ""
+echo "Output dir: $OUTDIR"
+echo "Prefix: $PREFIX"
+
+#SIMDIR=($combine_dirs)
+#SIMNAME=($combine_dirs_label)
+APP=/home/vfcosta/omnet/omnet4_workspace/ft_cup_omnet4/run
+
+. $APP/combine_graphs.sh decision right bottom "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh sinknodes right top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh sinktime left top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh consensustime right bottom "$X_AXIS" $X_TIC
+
+. $APP/combine_graphs.sh collectnodes right bottom "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh collect left top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh pdnodes left top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh pd left top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh sink left top "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh agreement right bottom "$X_AXIS" $X_TIC
+. $APP/combine_graphs.sh rounds left top "$X_AXIS" $X_TIC
+
+mkdir -p $OUTDIR
+mv *.eps $OUTDIR
+mv decision_xgraph* $OUTDIR

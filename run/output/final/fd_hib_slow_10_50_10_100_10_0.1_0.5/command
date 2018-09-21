@@ -1,0 +1,1 @@
+./run.sh -e -i 10 -m 50 -v 10 -r 30 -k 10 -f 0.1 -p 0.5 -d final-fd/fd_hib_slow_10_50_10_100_10_0.1_0.5 -o ../src/omnetpp_hib_lowspeed.ini -a 250000

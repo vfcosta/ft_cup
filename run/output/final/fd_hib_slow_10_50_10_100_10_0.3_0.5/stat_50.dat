@@ -1,0 +1,88 @@
+
+#
+# (cStdDev) sim.trace.Collect converge
+#
+30	 #= num_vals
+35 42	 #= min, max
+1157	 #= sum
+44727	 #= square sum
+
+#
+# (cStdDev) sim.trace.Sink nodes
+#
+30	 #= num_vals
+0 7	 #= min, max
+49	 #= sum
+163	 #= square sum
+
+#
+# (cStdDev) sim.trace.Sink converge
+#
+30	 #= num_vals
+20 39	 #= min, max
+1041	 #= sum
+36689	 #= square sum
+
+#
+# (cStdDev) sim.trace.Decision nodes
+#
+30	 #= num_vals
+0 43	 #= min, max
+258	 #= sum
+11094	 #= square sum
+
+#
+# (cStdDev) sim.trace.Consensus Time
+#
+258	 #= num_vals
+10.7384 19.2814	 #= min, max
+3704.07	 #= sum
+55503.6	 #= square sum
+
+#
+# (cStdDev) sim.trace.Sink time
+#
+1041	 #= num_vals
+3.60041 37.3898	 #= min, max
+11220.5	 #= sum
+132894	 #= square sum
+
+#
+# (cStdDev) sim.trace.PD converge
+#
+30	 #= num_vals
+43 43	 #= min, max
+1290	 #= sum
+55470	 #= square sum
+
+#
+# (cStdDev) sim.trace.PD nodes
+#
+1290	 #= num_vals
+3 20	 #= min, max
+14657	 #= sum
+180559	 #= square sum
+
+#
+# (cStdDev) sim.trace.Collect nodes
+#
+1157	 #= num_vals
+4 32	 #= min, max
+18115	 #= sum
+313663	 #= square sum
+
+#
+# (cStdDev) sim.trace.Agreement
+#
+30	 #= num_vals
+1 1	 #= min, max
+30	 #= sum
+30	 #= square sum
+
+#
+# (cStdDev) sim.trace.Rounds
+#
+236	 #= num_vals
+1 1	 #= min, max
+236	 #= sum
+236	 #= square sum

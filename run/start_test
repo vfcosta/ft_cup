@@ -1,0 +1,63 @@
+MAX_NODES=50
+OUTDIR=sbrc
+RUNS=30
+EXEC="-e"
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 1 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.1_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.1_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0.5 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.1_0.5 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 1 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.1_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.1_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0.5 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.1_0.5 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 1 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.1_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.1_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.1 -p 0.5 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.1_0.5 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 1 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.2_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 0 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.2_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 1 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.2_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 0 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.2_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 1 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.2_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.2 -p 0 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.2_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 1 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.3_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.3_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0.5 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.3_0.5 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 1 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.3_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.3_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0.5 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.3_0.5 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 1 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.3_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.3_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.3 -p 0.5 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.3_0.5 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 1 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.4_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 0 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.4_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 1 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.4_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 0 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.4_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 1 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.4_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+#./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.4 -p 0 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.4_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 1 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.5_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.5_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0.5 -d $OUTDIR/random_sparse_slow_10_50_10_100_10_0.5_0.5 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 1 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.5_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.5_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0.5 -d $OUTDIR/random_normal_slow_10_50_10_100_10_0.5_0.5 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 1 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.5_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.5_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh $EXEC  -i 10 -m $MAX_NODES -v 10 -r $RUNS -k 10 -f 0.5 -p 0.5 -d $OUTDIR/random_dense_slow_10_50_10_100_10_0.5_0.5 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+

@@ -1,0 +1,39 @@
+#low speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_dense_slow_10_50_10_100_10_-1_0 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_sparse_slow_10_50_10_100_10_-1_0 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#high speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_dense_quick_10_50_10_100_10_-1_0 -o ../src/omnetpp_300_highspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_sparse_quick_10_50_10_100_10_-1_0 -o ../src/omnetpp_500_highspeed.ini -a 250000
+
+#normal density
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_normal_quick_10_50_10_100_10_-1_0 -o ../src/omnetpp_400_highspeed.ini -a 160000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0 -d ppgm_new/random_normal_slow_10_50_10_100_10_-1_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+
+## with faults
+#low speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_dense_slow_10_50_10_100_10_-1_1 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_sparse_slow_10_50_10_100_10_-1_1 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#high speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_dense_quick_10_50_10_100_10_-1_1 -o ../src/omnetpp_300_highspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_sparse_quick_10_50_10_100_10_-1_1 -o ../src/omnetpp_500_highspeed.ini -a 250000
+
+#normal density
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_normal_quick_10_50_10_100_10_-1_1 -o ../src/omnetpp_400_highspeed.ini -a 160000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 1 -d ppgm_new/random_normal_slow_10_50_10_100_10_-1_1 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+
+#0.5 faults
+#low speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_dense_slow_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_300_lowspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_sparse_slow_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_500_lowspeed.ini -a 250000
+
+#high speed
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_dense_quick_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_300_highspeed.ini -a 90000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_sparse_quick_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_500_highspeed.ini -a 250000
+
+#normal density
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_normal_quick_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_400_highspeed.ini -a 160000
+./run.sh -i 10 -m 50 -v 10 -r 10 -k -1 -f -1 -p 0.5 -d ppgm_new/random_normal_slow_10_50_10_100_10_-1_0.5 -o ../src/omnetpp_400_lowspeed.ini -a 160000
+

@@ -1,0 +1,1 @@
+./run.sh -e -i 10 -m 50 -v 10 -r 30 -k 10 -f 0.3 -p 0 -d final-leader/leader_normal_slow_10_50_10_100_10_0.3_0 -o ../src/omnetpp_400_lowspeed.ini -a 160000
